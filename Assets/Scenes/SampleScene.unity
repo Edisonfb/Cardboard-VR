@@ -679,6 +679,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238024111}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &262814151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262814152}
+  m_Layer: 0
+  m_Name: PrefabPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &262814152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262814151}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06161827, y: -0.11, z: 0.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 963194228}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &273360819
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,6 +3178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 712105145}
+  - {fileID: 262814152}
   m_Father: {fileID: 1252409887}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3825,9 +3856,10 @@ GameObject:
   - component: {fileID: 1232168308}
   - component: {fileID: 1232168307}
   - component: {fileID: 1232168306}
+  - component: {fileID: 1232168311}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Alvo
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3949,6 +3981,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1232168311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232168305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7c91684e55e254c93bb0cd24fa475d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 50
+  obstacle: {fileID: 0}
 --- !u!1 &1249465159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3979,7 +4025,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 0
-  shootDelay: 1
+  shootDelay: 3
+  bullet: {fileID: 8698004955849293654, guid: e53d1df290eb9fe43adb2f84bac488fc, type: 3}
+  positionPrefab: {fileID: 262814152}
+  speedBullet: 1500
 --- !u!4 &1249465161
 Transform:
   m_ObjectHideFlags: 0
@@ -3988,7 +4037,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249465159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5889778, y: 2.8353477, z: -17.741493}
+  m_LocalPosition: {x: -11.34, y: 2.8353477, z: 1.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

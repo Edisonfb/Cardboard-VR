@@ -8,6 +8,11 @@ public class Weapon : MonoBehaviour
     public bool canShoot = false;
     public float shootDelay = 1.0f;
 
+
+    public GameObject bullet;
+    public Transform positionPrefab;
+    public float speedBullet = 500;
+
     public void EnterShoot()
     {
         Debug.Log("entrou");
@@ -36,6 +41,9 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
-
+        Debug.Log("criou tiro");
+        GameObject aux = Instantiate(bullet, positionPrefab.position, positionPrefab.rotation);
+        //calcular direçao do tiro
+        aux.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * speedBullet, ForceMode.Force);
     }
 }

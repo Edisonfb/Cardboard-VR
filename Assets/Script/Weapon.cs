@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour
         
         Debug.Log("está rodando essa bagaça");
         Shoot();
-        StartCoroutine(ShootTimer());
+        StartCoroutine(shootCoroutine);
 
         //yield return null;
         

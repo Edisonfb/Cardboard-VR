@@ -4,46 +4,42 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    IEnumerator shootCoroutine;
-    public bool canShoot = false;
-    public float shootDelay = 1.0f;
 
+	public Projectile projectilePrefab;
+	public Transform positionPrefab;
+	private IEnumerator shootCoroutine;
 
-    public GameObject bullet;
-    public Transform positionPrefab;
-    public float speedBullet = 500;
+	public bool canShoot = false;
+	public float shootDelay = 1.0f;
+	public float projectileForce = 500;
+	public float damage;
 
-    public void EnterShoot()
-    {
-        Debug.Log("entrou");
-        shootCoroutine = ShootTimer();
-        StartCoroutine(shootCoroutine);
-    }
+	public void EnterShoot()
+	{
+		shootCoroutine = ShootTimer();
+		StartCoroutine(shootCoroutine);
+	}
 
-    public void ExitShoot()
-    {
-        Debug.Log("saiu");
-        StopCoroutine(shootCoroutine);
-    }
+	public void ExitShoot()
+	{
+		StopCoroutine(shootCoroutine);
+	}
 
-   IEnumerator ShootTimer()
-    {
-        yield return new WaitForSeconds(shootDelay);
-        
-        Debug.Log("está rodando essa bagaça");
-        Shoot();
-        StartCoroutine(shootCoroutine);
+	private IEnumerator ShootTimer()
+	{
+		yield return new WaitForSeconds(shootDelay);
 
-        //yield return null;
-        
-       
-    }
+		Shoot();
+		StartCoroutine(shootCoroutine);
+	}
 
-    void Shoot()
-    {
-        Debug.Log("criou tiro");
-        GameObject aux = Instantiate(bullet, positionPrefab.position, positionPrefab.rotation);
-        //calcular direçao do tiro
-        aux.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * speedBullet, ForceMode.Force);
-    }
+	private void Shoot()
+	{
+		Debug.Log("criou tiro");
+		Projectile projectile = Instantiate(projectilePrefab, positionPrefab.position, positionPrefab.rotation);
+		//calcular direçao do tiro
+		projectile.rb.AddForce(Camera.main.transform.forward * projectileForce, ForceMode.Force);
+		projectile.damage = damage;
+	}
+
 }

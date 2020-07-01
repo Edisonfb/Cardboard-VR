@@ -6,22 +6,23 @@ public class Weapon : MonoBehaviour
 {
 
 	public Projectile projectilePrefab;
-	public Transform positionPrefab;
+	public Transform firePoint;
 	private IEnumerator shootCoroutine;
 
-	public bool canShoot = false;
 	public float shootDelay = 1.0f;
-	public float projectileForce = 500;
-	public float damage;
+	public float projectileForce = 1000;
+	public int damage = 10;
 
 	public void EnterShoot()
 	{
+		Debug.Log("enter");
 		shootCoroutine = ShootTimer();
 		StartCoroutine(shootCoroutine);
 	}
 
 	public void ExitShoot()
 	{
+		Debug.Log("exit");
 		StopCoroutine(shootCoroutine);
 	}
 
@@ -36,9 +37,9 @@ public class Weapon : MonoBehaviour
 	private void Shoot()
 	{
 		Debug.Log("criou tiro");
-		Projectile projectile = Instantiate(projectilePrefab, positionPrefab.position, positionPrefab.rotation);
+		Projectile projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 		//calcular direçao do tiro
-		projectile.rb.AddForce(Camera.main.transform.forward * projectileForce, ForceMode.Force);
+		projectile.rb.AddForce(firePoint.forward * projectileForce, ForceMode.Force);
 		projectile.damage = damage;
 	}
 

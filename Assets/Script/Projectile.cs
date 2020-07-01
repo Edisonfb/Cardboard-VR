@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-	public float damage;
+	public int damage = 10;
 	public Rigidbody rb;
 
 	private void Awake()
@@ -21,9 +21,9 @@ public class Projectile : MonoBehaviour
 	{
 		if (collision.collider.CompareTag("Target"))
 		{
-			Target target = collision.collider.GetComponent<Target>();
+			Enemy enemy = collision.collider.GetComponent<Enemy>();
 
-			target.TakeDamage(damage);
+			enemy.TakeDamage(damage);
 			Destroy(gameObject);
 		}
 	}

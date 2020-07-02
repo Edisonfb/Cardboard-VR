@@ -46,7 +46,8 @@ public class Player : MonoBehaviour
 	{
 		if (pointIndex >= FollowPath.points.Length - 1)
 		{
-			stop = true;
+            pointIndex = 0;
+            target = FollowPath.points[pointIndex];
 		}
 		else
 		{

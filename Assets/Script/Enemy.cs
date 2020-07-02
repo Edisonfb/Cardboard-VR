@@ -23,16 +23,18 @@ public class Enemy : MonoBehaviour
 		entry.eventID = EventTriggerType.PointerEnter;
 		entry.callback.AddListener((data) =>
 		{
-			Player.Instance.leftWeapon.EnterShoot();
-			Player.Instance.rightWeapon.EnterShoot();
+            Debug.Log("entrou");
+			Player.Instance.leftWeapon.canShoot = true;
+			Player.Instance.rightWeapon.canShoot = true;
 		});
 
 		EventTrigger.Entry entry2 = new EventTrigger.Entry();
 		entry2.eventID = EventTriggerType.PointerExit;
 		entry2.callback.AddListener((data) =>
 		{
-			Player.Instance.leftWeapon.ExitShoot();
-			Player.Instance.rightWeapon.ExitShoot();
+            Debug.Log("saiu");
+			Player.Instance.leftWeapon.canShoot = false;
+			Player.Instance.rightWeapon.canShoot = false;
 		});
 
 		trigger.triggers.Add(entry);
@@ -51,7 +53,9 @@ public class Enemy : MonoBehaviour
 		health -= damage;
 		if (health <= 0)
 		{
+            Player.Instance.leftWeapon.canShoot = false;
+            Player.Instance.rightWeapon.canShoot = false;
 			Destroy(gameObject);
-		}
+        }
 	}
 }

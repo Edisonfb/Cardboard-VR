@@ -6,6 +6,8 @@ public class Spawner : MonoBehaviour
 {
 	public GameObject enemyPrefab;
 
+    public int timer;
+
 	private Transform[] spawnPositions;
 
 	private int enemyCount = 0;
@@ -18,7 +20,7 @@ public class Spawner : MonoBehaviour
 
 	private IEnumerator DelaySpawn()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(timer);
 
 		Spawn();
 		StartCoroutine(DelaySpawn());
@@ -31,4 +33,6 @@ public class Spawner : MonoBehaviour
 		Quaternion rotation = enemyPrefab.transform.rotation;
 		GameObject enemy = Instantiate(enemyPrefab, position, rotation);
 	}
+
+  
 }

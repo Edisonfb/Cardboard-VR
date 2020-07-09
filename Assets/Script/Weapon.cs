@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-
+    public ParticleSystem particle;
     public Projectile projectilePrefab;
     public Transform firePoint;
     private IEnumerator shootCoroutine;
@@ -37,6 +37,7 @@ public class Weapon : MonoBehaviour
         //calcular direçao do tiro
         projectile.rb.AddForce(firePoint.forward * projectileForce, ForceMode.Force);
         projectile.damage = damage;
+        particle.Play();
     }
 
 }
